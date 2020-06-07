@@ -1,9 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, Profiler } from 'react';
 import { Keyboard } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../services/api';
 
-import { Container, Form, Input, SubmitButton } from './styles';
+import {
+  Container,
+  Form,
+  Input,
+  SubmitButton,
+  List,
+  User,
+  Avatar,
+  Name,
+  Bio,
+  ProfileButton,
+  ProfilerButtonText,
+} from './styles';
 
 export default class Main extends Component {
   state = {
@@ -15,13 +27,13 @@ export default class Main extends Component {
     const { users, newUser } = this.state;
 
     await api
-      .get(`/users?q=${newUser}`)
+      .get(`/users/${newUser}`)
       .then((response) => {
         const data = {
-          name: response.data.items.name,
-          login: response.data.items.login,
-          bio: response.data.items.bio,
-          avatar: response.data.items.avatar_url,
+          name: response.data.name,
+          login: response.data.login,
+          bio: response.data.bio,
+          avatar: response.data.avatar_url,
         };
 
         this.setState({
@@ -54,6 +66,20 @@ export default class Main extends Component {
             <Icon name="add" size={20} color="#FFF" />
           </SubmitButton>
         </Form>
+        <List
+          data={users}
+          keyExtractor={(users) => users.login}
+          renderItem={({ item }) => (
+            <User>
+              <Avatar source={{ uri: item.avatar }} />
+              <Name>{item.name}</Name>
+              <Bio>{item.bio}</Bio>
+              <ProfileButton onPress={() => {}}>
+                <ProfilerButtonText>Ver perfil</ProfilerButtonText>
+              </ProfileButton>
+            </User>
+          )}
+        />
       </Container>
     );
   }

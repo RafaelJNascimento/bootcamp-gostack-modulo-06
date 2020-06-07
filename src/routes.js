@@ -28,7 +28,7 @@ export default function Routes() {
           name="Home"
           component={Main}
           options={{
-            title: 'Página Inicial',
+            title: 'Usuários',
             //headerStyle: {
             //  backgroundColor: '#f4511e',
             //},
