@@ -1,6 +1,13 @@
-import React from 'react';
-import { View } from 'react-native';
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
-export default function App() {
-  return <View />;
+export default class User extends Component {
+  static navigationsOptions = {
+    title: 'Hello world',
+  };
+
+  async componentDidMount() {}
+  render() {
+    return <View />;
+  }
 }

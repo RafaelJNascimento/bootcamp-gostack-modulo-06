@@ -1,4 +1,5 @@
 import React, { Component, Profiler } from 'react';
+import propTypes from 'prop-types';
 import { Keyboard, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -23,6 +24,12 @@ export default class Main extends Component {
     newUser: '',
     users: [],
     loading: false,
+  };
+
+  static propTypes = {
+    navigation: propTypes.shape({
+      navigate: propTypes.func,
+    }).isRequired,
   };
 
   async componentDidMount() {
@@ -66,6 +73,11 @@ export default class Main extends Component {
     Keyboard.dismiss();
   };
 
+  handleNavigate = (user) => {
+    const { navigation } = this.props;
+    navigation.navigate('User', { user });
+  };
+
   render() {
     const { users, newUser, loading } = this.state;
 
@@ -97,7 +109,11 @@ export default class Main extends Component {
               <Avatar source={{ uri: item.avatar }} />
               <Name>{item.name}</Name>
               <Bio>{item.bio}</Bio>
-              <ProfileButton onPress={() => {}}>
+              <ProfileButton
+                onPress={() => {
+                  this.handleNavigate(item);
+                }}
+              >
                 <ProfilerButtonText>Ver perfil</ProfilerButtonText>
               </ProfileButton>
             </User>
