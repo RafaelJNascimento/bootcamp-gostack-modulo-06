@@ -1,16 +1,21 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { Container } from './styles';
+import { Container, Form, Input, SubmitButton } from './styles';
 
 export default function App({ navigation }) {
   return (
     <Container>
-      <Text>Página Inicial</Text>
-      <Button
-        title="Ir para a página de usuário"
-        onPress={() => navigation.navigate('User')}
-      />
+      <Form>
+        <Input
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="Adicionar usuário"
+        />
+        <SubmitButton>
+          <Icon name="add" size={20} color="#FFF" />
+        </SubmitButton>
+      </Form>
     </Container>
   );
 }
