@@ -1,14 +1,16 @@
 import React from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, Text } from 'react-native';
+
+import { Container } from './styles';
 
 export default function App({ navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <Container>
       <Text>Página Inicial</Text>
       <Button
         title="Ir para a página de usuário"
         onPress={() => navigation.navigate('User')}
       />
-    </View>
+    </Container>
   );
 }
