@@ -29,9 +29,9 @@ export default function Routes() {
           component={Main}
           options={{
             title: 'Página Inicial',
-            headerStyle: {
-              backgroundColor: '#f4511e',
-            },
+            //headerStyle: {
+            //  backgroundColor: '#f4511e',
+            //},
             headerTitleStyle: {
               textAlign: 'center',
               flex: 1,
