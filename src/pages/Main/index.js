@@ -1,7 +1,7 @@
 import React, { Component, Profiler } from 'react';
 import propTypes from 'prop-types';
 import { Keyboard, ActivityIndicator } from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import api from '../../services/api';
 
@@ -97,8 +97,8 @@ export default class Main extends Component {
             {loading ? (
               <ActivityIndicator color="#fff" />
             ) : (
-              <Icon name="add" size={20} color="#FFF" />
-            )}
+                <Icon name="add" size={20} color="#FFF" />
+              )}
           </SubmitButton>
         </Form>
         <List
